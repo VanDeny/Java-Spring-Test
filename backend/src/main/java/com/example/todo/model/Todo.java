@@ -1,4 +1,4 @@
-package com.example.demo.todo.model;
+package com.example.todo.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

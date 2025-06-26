@@ -1,7 +1,7 @@
-package com.example.demo.todo.service.TodoApplication;
+package com.example.todo.service.TodoApplication;
 
-import com.example.demo.todo.model.RequestTodo;
-import com.example.demo.todo.model.Todo;
+import com.example.todo.model.RequestTodo;
+import com.example.todo.model.Todo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.example.demo.todo.controller;
+package com.example.todo.controller;
 
-import com.example.demo.todo.model.RequestTodo;
-import com.example.demo.todo.model.Todo;
-import com.example.demo.todo.service.TodoApplication.TodoService;
+import com.example.todo.model.RequestTodo;
+import com.example.todo.model.Todo;
+import com.example.todo.service.TodoApplication.TodoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
