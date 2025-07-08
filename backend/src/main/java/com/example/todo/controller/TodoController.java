@@ -2,6 +2,7 @@ package com.example.todo.controller;
 
 import com.example.todo.model.RequestTodo;
 import com.example.todo.model.Todo;
+import com.example.todo.service.TodoApplication.ReturnPatchValue;
 import com.example.todo.service.TodoApplication.TodoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class TodoController {
     }
 
     @PatchMapping("/{id}")
-    public Todo updateTodo(@PathVariable String id, @RequestBody RequestTodo todo) {
+    public ReturnPatchValue updateTodo(@PathVariable String id, @RequestBody RequestTodo todo) {
         return todoService.updateTodoById(id, todo);
     }
 
