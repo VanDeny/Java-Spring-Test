@@ -1,5 +1,4 @@
-export default function todoView(todos: {id: string, todo: string, done: boolean, date: string}[], callback: Function) {
-
+export default function todoView(todos: {id: string, todo: string, done: boolean, date: string}[], callback: {refreshTodos: Function, openModal: Function}) {
 
     const deleteTodo = (id: string) => {
         try {
@@ -7,7 +6,7 @@ export default function todoView(todos: {id: string, todo: string, done: boolean
                 .then(res => {
                     if (res.ok) {
                         console.log('Todo deleted');
-                        callback();
+                        callback.refreshTodos();
                     } else {
                         console.log('Delete failed');
                     }
@@ -19,9 +18,11 @@ export default function todoView(todos: {id: string, todo: string, done: boolean
     }
 
     return todos.map(item => {
-        return (<li key={item.id}>
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'} as Intl.DateTimeFormatOptions;
+        const dateFormated = new Date(item.date).toLocaleDateString('cs-Cz', options);
+        return (<li key={item.id} onClick={() => callback.openModal()}>
             <div>{item.todo}</div>
-            <div>{item.date}</div>
+            <div>{dateFormated}</div>
             <div>{item.done}</div>
             <button>Edit</button>
             <button type='submit' onClick={() => deleteTodo(item.id)}>Delete</button>

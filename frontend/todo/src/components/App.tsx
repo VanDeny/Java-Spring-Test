@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+          <div>Absolutne overcomplicated debilníček</div>
           <TodoList/>
       </header>
     </div>
