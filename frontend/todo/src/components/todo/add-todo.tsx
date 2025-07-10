@@ -1,7 +1,8 @@
 import {useState} from "react";
+import {AddTodoProps} from "../../model/add-todo.props.model";
 
 // @ts-ignore
-export default function AddTodo({callback}) {
+export default function AddTodo(callback: AddTodoProps) {
     const [newTodoText, setNewTodoText] = useState('');
     const [newTodoDone, setNewTodoDone] = useState(false);
 
@@ -17,7 +18,9 @@ export default function AddTodo({callback}) {
         })
             .then(response => {
                 if (response.ok && callback) {
-                    callback();
+                    setNewTodoDone(false);
+                    setNewTodoText('');
+                    callback.refreshTodos();
                 } else if (!response.ok) {
                     console.error('ya fucked up');
                 }

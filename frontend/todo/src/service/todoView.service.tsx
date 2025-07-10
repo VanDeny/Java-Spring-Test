@@ -1,4 +1,7 @@
-export default function todoView(todos: {id: string, todo: string, done: boolean, date: string}[], callback: {refreshTodos: Function, openModal: Function}) {
+import {Todo} from "../model/todo.model";
+import {AddTodoProps} from "../model/add-todo.props.model";
+
+export default function todoView(todos: Todo[], callback: AddTodoProps) {
 
     const deleteTodo = (id: string) => {
         try {
@@ -19,13 +22,16 @@ export default function todoView(todos: {id: string, todo: string, done: boolean
 
     return todos.map(item => {
         const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'} as Intl.DateTimeFormatOptions;
-        const dateFormated = new Date(item.date).toLocaleDateString('cs-Cz', options);
-        return (<li key={item.id} onClick={() => callback.openModal()}>
-            <div>{item.todo}</div>
+        const dateFormated = item.date ? new Date(item.date).toLocaleDateString('cs-Cz', options) : null;
+        return (<li key={item.id} onClick={() => callback.openModal(item.id)}>
+            <div>{item.text}</div>
             <div>{dateFormated}</div>
             <div>{item.done}</div>
             <button>Edit</button>
-            <button type='submit' onClick={() => deleteTodo(item.id)}>Delete</button>
+            <button type='submit' onClick={(e) => {
+                e.stopPropagation();
+                deleteTodo(item.id);
+            }}>Delete</button>
         </li>)
     })
 }

@@ -16,7 +16,7 @@ public class Todo {
         this.done = done;
     }
 
-    public String getTodo() {
+    public String getText() {
         return this.text;
     }
 
