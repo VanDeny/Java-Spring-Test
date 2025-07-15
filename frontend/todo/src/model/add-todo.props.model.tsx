@@ -1,3 +1,8 @@
 export type AddTodoProps = {
-    [key: string]: (...args: any[]) => any;
+    refreshTodos: () => void;
+};
+
+export type TodoViewProps = {
+    refreshTodos: () => void;
+    openModal: (id: string) => void;
 };

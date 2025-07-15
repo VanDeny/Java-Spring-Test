@@ -1,7 +1,7 @@
 import {Todo} from "../model/todo.model";
-import {AddTodoProps} from "../model/add-todo.props.model";
+import {TodoViewProps} from "../model/add-todo.props.model";
 
-export default function todoView(todos: Todo[], callback: AddTodoProps) {
+export default function todoView(todos: Todo[], callback: TodoViewProps) {
 
     const deleteTodo = (id: string) => {
         try {

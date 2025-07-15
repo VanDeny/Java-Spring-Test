@@ -81,7 +81,7 @@ export default function TodoList() {
 
     return (
         <div>
-            <AddTodo callback={refreshTodos}/>
+            <AddTodo refreshTodos={refreshTodos}/>
             <button onClick={cons}>Test</button>
             <ul>
                 { todos }
